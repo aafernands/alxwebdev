@@ -24,11 +24,11 @@ export default function RootLayout({ children }) {
 			<body className={`${roboto.className} ${montserrat.className}`}>
 				<ThemeProvider theme={lightTheme}>
 					<CssBaseline />
-					<Navbar />
 					<Container sx={{ bgcolor: "white", py: "86px" }}>
+						<Navbar />
 						{children}
+						<Footer />
 					</Container>{" "}
-					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>
