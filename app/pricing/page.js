@@ -288,7 +288,7 @@ const Pricing = () => {
 									}}
 								>
 									<Link
-										href="https://calendly.com/fndslabs-15min-call/15min"
+										href="https://calendly.com/alxwebdev-15min-call/15min"
 										className={styles.schedulleLink}
 									>
 										Schedule a call

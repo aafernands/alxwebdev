@@ -29,10 +29,10 @@ const Footer = () => {
 				<Link href="/" passHref>
 					<Box
 						component="img"
-						src="../logoWhite.png"
-						alt="FNDS Labs Logo"
+						src="../logo.png"
+						alt="ALX WEB DEV Logo"
 						sx={{
-							maxWidth: "150px",
+							maxWidth: "120px",
 						}}
 					/>
 				</Link>
@@ -97,7 +97,7 @@ const Footer = () => {
 			{/* Social Media Links */}
 			<Box sx={{ marginTop: "20px" }}>
 				<a
-					href="https://www.facebook.com/fndslabs/"
+					href="https://www.facebook.com/alxwebdev/"
 					target="_blank"
 					rel="noopener noreferrer"
 					style={{ color: "#171717", marginRight: "15px" }}
@@ -105,7 +105,7 @@ const Footer = () => {
 					<Facebook />
 				</a>
 				<a
-					href="https://www.instagram.com/fnds.labs"
+					href="https://www.instagram.com/alxwebdev"
 					target="_blank"
 					rel="noopener noreferrer"
 					style={{ color: "#171717", '&:hover': {
@@ -118,7 +118,7 @@ const Footer = () => {
 
 			{/* Copyright */}
 			<Typography variant="body2" sx={{ marginTop: "10px" }}>
-				© {currentDate} FNDS Labs. All rights reserved.
+				© {currentDate} ALX Web Dev. All rights reserved.
 			</Typography>
 		</Box>
 	);

@@ -1,22 +1,15 @@
-import React from "react";
-import {
-  Container,
-  Typography,
-  Button,
-  Box,
-  Card,
-  CardMedia,
-  CardContent,
-  Grid,
-} from "@mui/material";
-import styles from "../styles/portfolioSection.module.css"; // Import the CSS module
+import React, { useState, useEffect } from "react";
+import { Container, Typography, Button, Box, Card, CardMedia, CardContent, Grid, IconButton, useMediaQuery, Chip } from "@mui/material";
+import { West, East } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
+import styles from "../styles/portfolioSection.module.css";
 
 const projects = [
   {
     title: "Bella Vita Ristorante",
     description:
       "A responsive website for an authentic Italian restaurant, showcasing the menu, story, and reservation options with a modern, user-friendly design.",
-    image: "./project1.png", // Replace with actual image paths
+    image: "./project1.png",
     liveDemo: "https://bella-vitta-restaurant.vercel.app/",
     githubLink: "https://github.com/aafernands/bella-vitta-restaurant",
     technologies: ["React", "Material UI", "Node.js", "Next.js"],
@@ -47,151 +40,120 @@ const projects = [
   },
 ];
 
-const PortfolioSection = () => {
+const Slideshow = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+
+  useEffect(() => {
+    if (!isLargeScreen) {
+      const interval = setInterval(() => {
+        handleNext();
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [currentIndex, isLargeScreen]);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
+  };
+
   return (
-    <>
-      <Container id="portfolio" className={styles.portfolioSection}>
-        <Typography variant="h2" className={styles.title}>
-          Portfolio
-        </Typography>
-        <Typography variant="body1" className={styles.paragraph}>
-          Explore some of our creative and innovative projects. Each project is
-          designed with care and attention to detail.
-        </Typography>
-        <Grid container spacing={3}>
+    <Container>
+      {isLargeScreen ? (
+        <Grid container spacing={4}>
           {projects.map((project, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card
-                sx={{
-                  bgcolor: "white",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  boxShadow: 3,
-                  borderRadius: 2,
-                  transition: "transform 0.3s",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                  },
-                }}
-                variant="outlined"
-              >
+            <Grid item xs={12} md={4} key={index}>
+              <Card sx={{ textAlign: "center", padding: "16px" }}>
                 <CardMedia
                   component="img"
                   height="200"
                   image={project.image}
                   alt={project.title}
-                  sx={{
-                    objectFit: "contain",
-                    borderRadius: 1,
-                    padding: "10px",
-                    margin: "10px",
-                  }}
                 />
-                <CardContent sx={{ textAlign: "center" }}>
-                  <Typography variant="h6">{project.title}</Typography>
-                  <Typography variant="body2" color="text.secondary">
+                <CardContent>
+                  <Typography variant="h6" fontWeight="bold">
+                    {project.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ marginBottom: 1 }}>
                     {project.description}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ marginTop: "10px" }}
-                  >
-                                          <br></br>
-
-                    <strong>Technologies:</strong> {project.technologies.join(", ")}
-                  </Typography>
-                  <br></br>
-
-                  <Box
-                    sx={{
-                      display: "flex",
-                      gap: "5px",
-                      flexWrap: "wrap",
-                      marginTop: "10px",
-                    }}
-                  >
-                    {project.tags.map((tag, i) => (
-                      <Box
-                        key={i}
-                        sx={{
-                          backgroundColor: "#f0f0f0",
-                          borderRadius: "12px",
-                          padding: "5px 10px",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {tag}
-                      </Box>
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, marginBottom: 1 }}>
+                    {project.technologies.map((tech, i) => (
+                      <Chip key={i} label={tech} variant="outlined" size="small" />
                     ))}
                   </Box>
-                  <br></br>
-
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      marginTop: "10px",
-                    }}
-                  >
-                    <Button
-                      href={project.liveDemo}
-                      target="_blank"
-                      variant="contained"
-                      size="small"
-                      sx={{ margin: "5px" }}
-                    >
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, marginBottom: 1 }}>
+                    {project.tags.map((tag, i) => (
+                      <Chip key={i} label={tag} color="primary" size="small" />
+                    ))}
+                  </Box>
+                  <Typography variant="caption" sx={{ fontStyle: "italic" }}>
+                    {project.date}
+                  </Typography>
+                  <Box mt={2}>
+                    <Button size="small" variant="contained" color="primary" href={project.liveDemo} target="_blank" sx={{ marginRight: 1 }}>
                       Live Demo
                     </Button>
-                    <Button
-                      href={project.githubLink}
-                      target="_blank"
-                      variant="outlined"
-                      size="small"
-                      sx={{ margin: "5px" }}
-                    >
+                    <Button size="small" variant="outlined" href={project.githubLink} target="_blank">
                       GitHub
                     </Button>
                   </Box>
-                  <Typography
-                    variant="caption"
-                    color="text.secondary"
-                    sx={{ marginTop: "10px" }}
-                  >
-                    Last Updated: {project.date}
-                  </Typography>
                 </CardContent>
               </Card>
             </Grid>
           ))}
         </Grid>
-      </Container>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 4,
-        }}
-      >
-        <Button
-          target="blank"
-          href="https://figma.com"
-          variant="contained"
-          aria-label="See More Projects"
-          sx={{
-            padding: "8px 16px",
-            color: "white",
-            textTransform: "none",
-            borderRadius: 2,
-            boxShadow: 2,
-          }}
-        >
-          See More Projects
-        </Button>
-      </Box>
-    </>
+      ) : (
+        <Box textAlign="center">
+          <Card sx={{ maxWidth: 400, margin: "auto", padding: "16px" }}>
+            <CardMedia component="img" height="200" image={projects[currentIndex].image} alt={projects[currentIndex].title} />
+            <CardContent>
+              <Typography variant="h6" fontWeight="bold">
+                {projects[currentIndex].title}
+              </Typography>
+              <Typography variant="body2" sx={{ marginBottom: 1 }}>
+                {projects[currentIndex].description}
+              </Typography>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, marginBottom: 1 }}>
+                {projects[currentIndex].technologies.map((tech, i) => (
+                  <Chip key={i} label={tech} variant="outlined" size="small" />
+                ))}
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, marginBottom: 1 }}>
+                {projects[currentIndex].tags.map((tag, i) => (
+                  <Chip key={i} label={tag} color="primary" size="small" />
+                ))}
+              </Box>
+              <Typography variant="caption" sx={{ fontStyle: "italic" }}>
+                {projects[currentIndex].date}
+              </Typography>
+              <Box mt={2}>
+                <Button size="small" variant="contained" color="primary" href={projects[currentIndex].liveDemo} target="_blank" sx={{ marginRight: 1 }}>
+                  Live Demo
+                </Button>
+                <Button size="small" variant="outlined" href={projects[currentIndex].githubLink} target="_blank">
+                  GitHub
+                </Button>
+              </Box>
+            </CardContent>
+          </Card>
+          <Box display="flex" justifyContent="center" mt={2}>
+            <IconButton onClick={handlePrev}>
+              <West />
+            </IconButton>
+            <IconButton onClick={handleNext}>
+              <East />
+            </IconButton>
+          </Box>
+        </Box>
+      )}
+    </Container>
   );
 };
 
-export default PortfolioSection;
+export default Slideshow;

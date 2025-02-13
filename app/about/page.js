@@ -9,7 +9,7 @@ const About = () => {
 			<section className={styles.aboutSection}>
 				<h1 className={styles.title}>Our Story</h1>
 				<p className={styles.paragraph}>
-					Welcome to FNDS Labs! We are a passionate team of web developers based
+					Welcome to ALX WEB DEV! We are a passionate team of web developers based
 					in New Jersey, USA. Founded by Alex Fernandes, our mission is simple:
 					to provide affordable, innovative, and high-quality web development
 					services to small businesses and entrepreneurs.
@@ -24,9 +24,9 @@ const About = () => {
 					clients from all around the world, helping businesses of all sizes
 					build the websites they need to succeed.
 				</p>
-				<p className={styles.paragraph}>Why Choose FNDS Labs?</p>
+				<p className={styles.paragraph}>Why Choose ALX WEB DEV?</p>
 				<p className={styles.paragraph}>
-					At FNDS Labs, we believe that your website should be more than just a
+					At ALX WEB DEV, we believe that your website should be more than just a
 					digital business card. It should be a powerful tool that drives
 					growth, attracts customers, and helps your business succeed. With our
 					expertise in modern web development, we create websites that are not

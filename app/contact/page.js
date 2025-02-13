@@ -70,7 +70,7 @@ export default function Contact() {
         {/* Contact Information */}
         <div className={styles.contactInfo}>
           <h2>Contact Information</h2>
-          <p>Email: contact@fndslabs.com</p>
+          <p>Email: contact@alxwebdev.com</p>
           <p>Phone: +1 (123) 456-7890</p>
           <p>Address: 1234 Web St, New York, NY 10001</p>
         </div>
@@ -91,21 +91,21 @@ export default function Contact() {
         {/* Social Media Links */}
         <div className={styles.socialMedia}>
           <a
-            href="https://www.facebook.com/fndslabs/"
+            href="https://www.facebook.com/alxwebdev/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Facebook />
           </a>
           <a
-            href="https://www.instagram.com/fnds.labs"
+            href="https://www.instagram.com/alxwebdev"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Instagram />
           </a>
           <a
-            href="https://www.linkedin.com/company/fndslabs"
+            href="https://www.linkedin.com/company/alxwebdev"
             target="_blank"
             rel="noopener noreferrer"
           >

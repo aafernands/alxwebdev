@@ -57,9 +57,9 @@ export default function FrequentQuestionsSection() {
 	const faqItems = [
 		{
 			id: "panel1",
-			question: "What services does FNDS LABS provide?",
+			question: "What services does ALX WEB DEV provide?",
 			answer:
-				"FNDS LABS specializes in custom web development, responsive design, SEO optimization, e-commerce solutions, and ongoing website maintenance. We also offer content management system (CMS) integration and web hosting services.",
+				"ALX WEB DEV specializes in custom web development, responsive design, SEO optimization, e-commerce solutions, and ongoing website maintenance. We also offer content management system (CMS) integration and web hosting services.",
 		},
 		{
 			id: "panel2",
@@ -108,7 +108,7 @@ export default function FrequentQuestionsSection() {
 		},
 		{
 			id: "panel8",
-			question: "What is the process for starting a project with FNDS LABS?",
+			question: "What is the process for starting a project with ALX WEB DEV?",
 			answer:
 				"The process starts with a consultation where we discuss your goals and requirements. After that, we provide a proposal and timeline. Once approved, we begin the design and development phase. Finally, we launch the site and offer ongoing support.",
 		},
@@ -128,12 +128,12 @@ export default function FrequentQuestionsSection() {
 		},
 		{
 			id: "panel10",
-			question: "How can I get in touch with FNDS LABS?",
+			question: "How can I get in touch with ALX WEB LAB?",
 			answer: (
 				<>
 					You can contact us through our website's contact form, email us
 					directly at{" "}
-					<a href="mailto:contact@fndslabs.com">contact@fndslabs.com</a>, or
+					<a href="mailto:contact@alxwebdev.com">contact@alxwebdev.com</a>, or
 					call us at <a href="tel:+11234567890">(123) 456-7890</a>. We are happy
 					to answer any questions you may have.
 				</>
@@ -176,7 +176,7 @@ export default function FrequentQuestionsSection() {
 						aria-controls={`${item.id}-content`}
 						id={`${item.id}-header`}
 					>
-						<Typography>{item.question}</Typography>
+						<Typography sx={{fontWeight: 700}}>{item.question}</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
 						<Typography>{item.answer}</Typography>

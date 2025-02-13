@@ -124,7 +124,7 @@ const HeroSection = () => {
 					{/* First Button: Book a Call */}
 					<Button
 						target="blank"
-						href="https://calendly.com/fndslabs-15min-call/15min"
+						href="https://calendly.com/alxwebdev-15min-call/15min"
 						variant="outlined"
 						aria-label="Book a Call"
 						sx={{

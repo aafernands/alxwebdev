@@ -34,7 +34,7 @@ export default function Navbar() {
           <a onClick={() => handleNavigation("/")} style={{ cursor: "pointer" }}>
             <img
               src="../logo.png"
-              alt="FNDS Labs Logo"
+              alt="ALX WEB DEV Logo"
               className={styles.logoImage}
             />
           </a>
